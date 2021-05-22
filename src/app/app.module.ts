@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GaugeModule } from 'angular-gauge';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
 import { HomeComponent } from './components/home/home.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { HttpHeaderInterceptor } from './core/interceptors/http-header.interceptor';
@@ -19,7 +20,8 @@ import { HttpHeaderInterceptor } from './core/interceptors/http-header.intercept
   declarations: [
     AppComponent,
     SearchBarComponent,
-    HomeComponent
+    HomeComponent,
+    ArticleDetailComponent
   ],
   imports: [
     BrowserModule,
