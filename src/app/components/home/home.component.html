@@ -14,19 +14,19 @@
 
 
 <section class="news">
-  <div class="new">
-    <div class="new-img-container">
+  <div class="article" *ngFor="let article of articleList">
+    <div class="article-img-container">
       <img
-        src="https://s.yimg.com/os/creatr-uploaded-images/2021-05/8ff66ae0-ba3b-11eb-a4bf-d4b770016e51"
-        alt=""
-        class="new-img"
+        [src]="article.urlToImage"
+        alt="#"
+        class="article-img"
       >
     </div>
-    <div class="new-infos">
-      <p class="new-title">Title</p>
-      <p class="new-author">Author</p>
-      <p class="new-published">Published at ...</p>
-      <p class="new-source">Source </p>
+    <div class="article-infos">
+      <p class="article-title">{{article.title}}</p>
+      <p class="article-author">{{article.author  !== '' ? article.author : 'Unknown author'}}</p>
+      <p class="article-published">{{article.publishedAt | date}}</p>
+      <p class="article-source">{{article.source.name}}</p>
     </div>
     <!-- <div class="new-description">
       <p>Description ...</p>

@@ -1,3 +1,5 @@
+import { Article, APIResponse } from './../../models/article.model';
+import { HttpService } from './../../services/http.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   sort: string;
-  constructor() { }
+  articleList: Article[] = [];
+
+  constructor(private httpService: HttpService) { }
 
   ngOnInit(): void {
+    this.httpService.getHeadLinesArticleList('top-headlines')
+      .subscribe((d : APIResponse<Article>) => {
+        this.articleList = d.articles;
+        console.log(this.articleList);
+
+    });
   }
 
 }
