@@ -1,13 +1,19 @@
 <div class="filters">
   <mat-form-field>
-    <mat-label>Sort</mat-label>
+    <mat-label>Category</mat-label>
     <mat-select
-      panelClass="sort-select"
-      [(ngModel)]="sort"
+      panelClass="category-select"
+      [(ngModel)]="category"
+      (selectionChange)="searchArticles(category)"
     >
-      <mat-option valie="published">Date published</mat-option>
-      <mat-option valie="relevancy">Relevancy</mat-option>
-      <mat-option valie="popularity">Popularity</mat-option>
+      <mat-option label="All" value=""></mat-option>
+      <mat-option value="business">Business</mat-option>
+      <mat-option value="entertainment">Entertainment</mat-option>
+      <mat-option value="general">General</mat-option>
+      <mat-option value="health">Health</mat-option>
+      <mat-option value="science">Science</mat-option>
+      <mat-option value="sports">Sports</mat-option>
+      <mat-option value="technology">Technology</mat-option>
     </mat-select>
   </mat-form-field>
 </div>

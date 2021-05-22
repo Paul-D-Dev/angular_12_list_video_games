@@ -27,8 +27,17 @@ export class HttpService {
   getHeadLinesArticleList(endPoints: string, country: string = 'us', paramsList?: {}): Observable<APIResponse<Article>> {
     let params = new HttpParams().set('country', country);
 
+    if (paramsList && Object.keys(paramsList).length > 0) {
+      for (const param in paramsList) {
+        if (Object.prototype.hasOwnProperty.call(paramsList, param)) {
+          params = new HttpParams().set(param, paramsList[param])
+        }
+      }
+    }
+
     return this.http.get<APIResponse<Article>>(env.API_URL + endPoints, {
       params: params,
     })
   }
+
 }
