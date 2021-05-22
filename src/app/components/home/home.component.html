@@ -1,0 +1,35 @@
+<div class="filters">
+  <mat-form-field>
+    <mat-label>Sort</mat-label>
+    <mat-select
+      panelClass="sort-select"
+      [(ngModel)]="sort"
+    >
+      <mat-option valie="published">Date published</mat-option>
+      <mat-option valie="relevancy">Relevancy</mat-option>
+      <mat-option valie="popularity">Popularity</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+
+<section class="news">
+  <div class="new">
+    <div class="new-img-container">
+      <img
+        src="https://s.yimg.com/os/creatr-uploaded-images/2021-05/8ff66ae0-ba3b-11eb-a4bf-d4b770016e51"
+        alt=""
+        class="new-img"
+      >
+    </div>
+    <div class="new-infos">
+      <p class="new-title">Title</p>
+      <p class="new-author">Author</p>
+      <p class="new-published">Published at ...</p>
+      <p class="new-source">Source </p>
+    </div>
+    <!-- <div class="new-description">
+      <p>Description ...</p>
+    </div> -->
+  </div>
+</section>
