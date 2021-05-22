@@ -10,11 +10,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GaugeModule } from 'angular-gauge';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,
