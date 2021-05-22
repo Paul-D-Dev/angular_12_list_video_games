@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { APIResponse, Article } from './../../models/article.model';
 import { HttpService } from './../../services/http.service';
 
@@ -8,19 +9,22 @@ import { HttpService } from './../../services/http.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
   category: string;
   endPoints = 'top-headlines';
   articleList: Article[] = [];
+  routeSub$: Subscription;
+  articleSub$: Subscription;
 
   constructor(private httpService: HttpService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(p => console.log(p));
 
-    this.httpService.getHeadLinesArticleList(this.endPoints)
+    this.routeSub$ = this.httpService.getHeadLinesArticleList(this.endPoints)
       .subscribe((d : APIResponse<Article>) => {
         this.articleList = d.articles;
     });
@@ -32,10 +36,32 @@ export class HomeComponent implements OnInit {
       params['category'] = category
     }
 
-    this.httpService.getHeadLinesArticleList(this.endPoints, 'us', params)
+    this.articleSub$ = this.httpService.getHeadLinesArticleList(this.endPoints, 'us', params)
       .subscribe((d : APIResponse<Article>) => {
         this.articleList = d.articles;
     });
+  }
+
+  openArticleDetails(index: number) {
+    this.router.navigate([
+      'detail'
+    ],
+      {
+        state : {
+          article: this.articleList[index]
+        }
+      }
+    )
+  }
+
+  ngOnDestroy(): void {
+    if (this.articleSub$) {
+      this.articleSub$.unsubscribe();
+    }
+
+    if (this.routeSub$) {
+      this.routeSub$.unsubscribe();
+    }
   }
 
 }
