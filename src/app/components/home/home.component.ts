@@ -42,18 +42,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
   }
 
-  openArticleDetails(index: number) {
-    this.router.navigate([
-      'detail'
-    ],
-      {
-        state : {
-          article: this.articleList[index]
-        }
-      }
-    )
-  }
-
   ngOnDestroy(): void {
     if (this.articleSub$) {
       this.articleSub$.unsubscribe();

@@ -20,25 +20,5 @@
 
 
 <section class="news">
-  <ng-container *ngFor="let article of articleList; index as i">
-    <div class="article" (click)="openArticleDetails(i)">
-      <div class="article-img-container">
-        <img
-          [src]="article.urlToImage"
-          alt="#"
-          class="article-img"
-        >
-      </div>
-      <div class="article-infos">
-        <p class="article-title">{{article.title}}</p>
-        <p class="article-author">{{article.author  !== '' ? article.author : 'Unknown author'}}</p>
-        <p class="article-published">{{article.publishedAt | date}}</p>
-        <p class="article-source">{{article.source.name}}</p>
-      </div>
-      <!-- <div class="new-description">
-        <p>Description ...</p>
-      </div> -->
-    </div>
-</ng-container>
-
+  <app-article-list [articleList]="articleList" [class]="'news'"></app-article-list>
 </section>
