@@ -15,15 +15,15 @@ export class ArticleListComponent{
   constructor(private router: Router) { }
 
   openArticleDetails(index: number) {
-    this.router.navigate([
-      'detail'
-    ],
-      {
-        state : {
-          article: this.articleList[index]
+      this.router.navigate([
+        '/detail',
+        this.articleList[index].title
+      ],
+        {
+          state : {
+            article: this.articleList[index]
+          }
         }
-      }
-    )
+      )
   }
-
 }

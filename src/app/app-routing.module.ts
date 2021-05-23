@@ -7,7 +7,7 @@ const routes: Routes = [
 
   { path: '', component: HomeComponent },
   { path: 'search/:news-search', component: HomeComponent },
-  { path: 'detail', component: ArticleDetailComponent },
+  { path: 'detail/:title-article', component: ArticleDetailComponent },
 ];
 
 @NgModule({

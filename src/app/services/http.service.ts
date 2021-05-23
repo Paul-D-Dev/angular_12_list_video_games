@@ -40,4 +40,14 @@ export class HttpService {
     })
   }
 
+  getMoreArticles(source: string): Observable<any> {
+    source = source.replace(' ', '-');
+    const nbArticles = 3;
+    const params = new HttpParams()
+                      .set('sources', source)
+                      .set('pageSize', nbArticles);
+
+    return this.http.get(env.API_URL + 'top-headlines', { params });
+  }
+
 }

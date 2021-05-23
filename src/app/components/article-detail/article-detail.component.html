@@ -30,4 +30,11 @@
   <section class="article-content">
     <p>{{article.content}}</p>
   </section>
+
+  <ng-container *ngIf="articlesListFromSource.length > 0">
+    <section class="article-more-source">
+      <h2>More articles from {{article.source.name}}</h2>
+      <app-article-list [articleList]="articlesListFromSource" [class]="'news'"></app-article-list>
+    </section>
+  </ng-container>
 </main>
