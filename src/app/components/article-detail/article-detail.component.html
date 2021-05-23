@@ -1,3 +1,33 @@
-<p>detail article</p>
 <app-back-button></app-back-button>
-<p>{{article?.author}}</p>
+
+<main class="details">
+  <section class="article-banner">
+    <img
+      class="article-banner-img"
+      [src]="article.urlToImage"
+      alt="Image background"
+    />
+  </section>
+
+  <header class="article-header">
+    <div class="article-header-infos">
+      <h1 class="article-header-infos-title">{{article.title}}</h1>
+      <h2 class="article-header-infos-author">{{article.author}}</h2>
+      <h2 class="article-header-infos-published">{{article.publishedAt | date}}</h2>
+    </div>
+    <div class="article-header-source">
+        <h2 class="article-header-source-name">{{article.source.name}}</h2>
+        <a
+          class="article-header-source-url"
+          [href]="article.url"
+          target="_blank"
+        >
+        Open article on {{article.source.name}}
+      </a>
+    </div>
+  </header>
+
+  <section class="article-content">
+    <p>{{article.content}}</p>
+  </section>
+</main>
